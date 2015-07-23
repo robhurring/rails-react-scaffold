@@ -6,6 +6,7 @@ Basic scaffolding app which includes the following components:
 * [Reflux](https://github.com/spoike/refluxjs)
 * [ES6](https://github.com/TannerRogalsky/sprockets-es6)
 * [Troupe](https://github.com/jonstokes/troupe) ([Interactor](https://github.com/collectiveidea/interactor))
+* [Reform](https://github.com/apotonick/reform)
 
 And some setup.
 
