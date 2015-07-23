@@ -1,8 +1,8 @@
 {
-  "name": "auto-refi",
+  "name": "my-app",
   "version": "0.0.0",
   "authors": [
-    "tech@lendkey.com"
+    "you@example.com"
   ],
   "main": "main.js",
   "moduleType": [
