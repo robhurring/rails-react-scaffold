@@ -1,5 +1,5 @@
 class Hello
-  include Troupe
+  include Action
 
   expects :name
   provides :message
