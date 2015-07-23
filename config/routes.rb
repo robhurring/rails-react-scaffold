@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
-  get '(*route_params)' => 'home#index', as: :home
   root to: 'home#index'
+
+  namespace :api do
+  end
+
+  # allow HTML5 routing
+  get '(*route_params)' => 'home#index', as: :home
 end
