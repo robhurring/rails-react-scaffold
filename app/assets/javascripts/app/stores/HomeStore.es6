@@ -6,7 +6,6 @@
     time: null,
 
     init() {
-      this.onUpdateTime();
     },
 
     onUpdateTime(format) {
