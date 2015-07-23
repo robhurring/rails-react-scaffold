@@ -1,3 +1,4 @@
+//= require es6-promise
 //= require jquery
 //= require lodash
 //= require react
