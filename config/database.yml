@@ -19,14 +19,14 @@ default: &default
 
 development:
   <<: *default
-  database: auto-refi_development
+  database: auto_refi_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: auto-refi_test
+  database: auto_refi_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: auto-refi_production
-  username: auto-refi
-  password: <%= ENV['AUTO-REFI_DATABASE_PASSWORD'] %>
+  database: auto_refi_production
+  username: auto_refi
+  password: <%= ENV['AUTO_REFI_DATABASE_PASSWORD'] %>
