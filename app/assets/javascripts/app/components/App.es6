@@ -1,4 +1,4 @@
-(function(exports, React, RouteHandler) {
+((exports, React, RouteHandler) => {
 
   exports.App = React.createClass({
     render() {

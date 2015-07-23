@@ -1,4 +1,4 @@
-(function(exports, React, ReactRouter) {
+((exports, React, ReactRouter) => {
   var Route = ReactRouter.Route;
   var DefaultRoute = ReactRouter.DefaultRoute;
 

@@ -1,4 +1,4 @@
-(function(exports, React) {
+((exports, React) => {
 
   exports.Header = React.createClass({
     render() {
