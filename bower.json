@@ -22,6 +22,7 @@
     "reflux": "~0.2.11",
     "lodash": "~3.10.0",
     "jquery": "~2.1.4",
-    "es6-promise": "~2.2.0"
+    "es6-promise": "~2.2.0",
+    "formsy-react": "~0.14.1"
   }
 }
