@@ -1,0 +1,19 @@
+{
+  "name": "auto-refi",
+  "version": "0.0.0",
+  "authors": [
+    "tech@lendkey.com"
+  ],
+  "main": "main.js",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
