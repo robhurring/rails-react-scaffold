@@ -1,7 +1,5 @@
-((exports, Reflux) => {
+let Reflux = require('reflux')
 
-  exports.HomeActions = Reflux.createActions([
-    'updateTime'
-  ]);
-
-})(window, Reflux);
+module.exports = Reflux.createActions([
+  'updateTime'
+]);

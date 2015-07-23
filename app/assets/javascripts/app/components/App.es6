@@ -1,14 +1,14 @@
-((exports, React, RouteHandler) => {
+let React = require('react');
+let RouteHandler = require('react-router').RouteHandler;
+let Header = require('./Header');
 
-  exports.App = React.createClass({
-    render() {
-      return (
-        <section>
-          <Header/>
-          <RouteHandler/>
-        </section>
-      );
-    }
-  });
-
-})(window, React, ReactRouter.RouteHandler);
+module.exports = React.createClass({
+  render() {
+    return (
+      <section>
+        <Header/>
+        <RouteHandler/>
+      </section>
+    );
+  }
+});

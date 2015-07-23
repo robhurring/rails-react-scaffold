@@ -1,38 +1,37 @@
-((exports, $) => {
-  let API = exports.API = {
-    endpoint: '/api'
+let $ = require('jquery')
+
+let API = exports.API = {
+  endpoint: '/api'
+}
+
+let apiPath = (path) => {
+  return `${API.endpoint}${path}`;
+};
+
+// API Wrapper around $.ajax that is specific to this app's API and Promise-based
+exports.request = (options) => {
+  if(!options) {
+    throw new Error('No options given')
   }
 
-  let apiPath = (path) => {
-    return `${API.endpoint}${path}`;
-  };
+  if(typeof options === 'string') {
+    options = {'url': options};
+  } else{
+    options = JSON.parse(JSON.stringify(options));
+  }
 
-  // API Wrapper around $.ajax that is specific to this app's API and Promise-based
-  exports.request = (options) => {
-    if(!options) {
-      throw new Error('No options given')
-    }
+  options.url = apiPath(options.url);
+  options.dataType = 'json';
 
-    if(typeof options === 'string') {
-      options = {'url': options};
-    } else{
-      options = JSON.parse(JSON.stringify(options));
-    }
+  return new Promise((resolve, reject) => {
+    let successHandler = (data, status, xhr) => {
+      resolve(data);
+    };
 
-    options.url = apiPath(options.url);
-    options.dataType = 'json';
+    let errorHandler = (xhr, status, error) => {
+      reject(xhr.responseJSON);
+    };
 
-    return new Promise((resolve, reject) => {
-      let successHandler = (data, status, xhr) => {
-        resolve(data);
-      };
-
-      let errorHandler = (xhr, status, error) => {
-        reject(xhr.responseJSON);
-      };
-
-      $.ajax(options).success(successHandler).fail(errorHandler);
-    });
-  };
-
-})(window, jQuery);
+    $.ajax(options).success(successHandler).fail(errorHandler);
+  });
+};

@@ -32,7 +32,6 @@ module ReactScaffold
       #{config.root}/app/forms
     )
 
-    config.react.addons = true
-    config.react.variant = :development
+    config.browserify_rails.commandline_options = %(-t babelify --extension=".es6")
   end
 end

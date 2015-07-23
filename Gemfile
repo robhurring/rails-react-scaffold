@@ -11,11 +11,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 #-----> App Dependencies
 
-gem 'sprockets-es6', '~> 0.7.0', require: 'sprockets/es6'
-gem 'react-rails', '~> 1.1.0'
 gem 'troupe', '~> 0.1.0'
 gem 'reform', '~> 2.0.3'
 gem 'virtus', '~> 1.0.3'
+gem 'browserify-rails'
 gem 'non-stupid-digest-assets', '~> 1.0.4'
 # gem 'pundit', '~> 0.3.0'
 # gem 'honeybadger', '~> 1.16.5'

@@ -22,13 +22,8 @@ Dir.chdir APP_ROOT do
   #   system "cp config/database.yml.sample config/database.yml"
   # end
 
-  unless exists?('bower')
-    puts "\n== Installing bower =="
-    system "npm install -g bower"
-  end
-
-  puts "== Installing bower dependencies =="
-  system "bower install"
+  puts "== Installing NPM dependencies =="
+  system "npm install"
 
   puts "\n== Preparing database =="
   system "bin/rake db:setup"
