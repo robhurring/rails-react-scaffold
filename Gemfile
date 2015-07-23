@@ -1,29 +1,5 @@
 source 'https://rubygems.org'
 
-source ENV['GEMSERVER_HOST'] || 'http://gems.lendkeylabs.com' do
-  def custom_require(name, version, opts = {})
-    unless ENV.key?('NO_CUSTOM_GEMS')
-      name_upcased = name.upcase.gsub('-', '_')
-      if gem_branch = ENV["#{name_upcased}_GIT_BRANCH"]
-        opts[:git] = "git@github.com:lendkey/#{name}.git"
-        opts[:branch] = gem_branch
-      elsif gem_dir = ENV["#{name_upcased}_DIR"]
-        opts[:path] = gem_dir
-      end  unless ENV["#{name_upcased}_DEPLOY"]
-    end
-    gem name, version, opts
-  end
-
-  #-----> LendKey Gemserver gems
-
-  # gem 'lkid', '>0'
-  # gem 'paperclip_strongbox', '> 0'
-  # custom_require 'gh-client', '> 0'
-  # custom_require 'quotes-client', '> 0'
-  # custom_require 'pullson-client', '> 0'
-  # custom_require 'nada-client', '> 0'
-end
-
 #-----> Framework Dependencies
 
 gem 'rails', '4.2.3'
