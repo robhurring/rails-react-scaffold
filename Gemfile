@@ -24,7 +24,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'sprockets-es6', '~> 0.7.0', require: 'sprockets/es6'
 gem 'react-rails', '~> 1.1.0'
-gem 'interactor-rails', '~> 2.0.1'
+gem 'troupe', '~> 0.1.0'
+gem 'reform', '~> 2.0.3'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
