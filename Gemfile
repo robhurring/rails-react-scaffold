@@ -26,6 +26,7 @@ gem 'sprockets-es6', '~> 0.7.0', require: 'sprockets/es6'
 gem 'react-rails', '~> 1.1.0'
 gem 'troupe', '~> 0.1.0'
 gem 'reform', '~> 2.0.3'
+gem 'virtus', '~> 1.0.3'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
