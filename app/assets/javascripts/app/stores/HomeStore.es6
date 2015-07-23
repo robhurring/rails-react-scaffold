@@ -9,11 +9,11 @@
       this.onUpdateTime();
     },
 
-    onUpdateTime() {
-      request('/time').then((data) => {
+    onUpdateTime(format) {
+      request({url: '/time', data: {format: format}}).then((data) => {
           this.time = data;
-        }, (err) => {
-            this.time = 'ERROR!';
+        }, (data) => {
+          this.time = `ERROR: ${data.error}]`;
         })
         .then(() => {
           this.trigger(this.time);

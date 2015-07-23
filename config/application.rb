@@ -27,5 +27,8 @@ module ReactScaffold
       #{config.root}/app/actions
       #{config.root}/app/forms
     )
+
+    config.react.addons = true
+    config.react.variant = :development
   end
 end

@@ -23,7 +23,15 @@
     options.dataType = 'json';
 
     return new Promise((resolve, reject) => {
-      $.ajax(options).success(resolve).error(reject);
+      let successHandler = (data, status, xhr) => {
+        resolve(data);
+      };
+
+      let errorHandler = (xhr, status, error) => {
+        reject(xhr.responseJSON);
+      };
+
+      $.ajax(options).success(successHandler).fail(errorHandler);
     });
   };
 

@@ -34,6 +34,5 @@
   },
   "_source": "git://github.com/rackt/react-router.git",
   "_target": "~0.13.3",
-  "_originalSource": "react-router",
-  "_direct": true
+  "_originalSource": "react-router"
 }
