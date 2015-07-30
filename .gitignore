@@ -12,4 +12,6 @@
 !/log/.keep
 /tmp
 
-node_modules
+/public/assets
+/node_modules
+/npm-debug.log

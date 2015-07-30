@@ -1,6 +1,6 @@
 let React = require('react');
 let ReactRouter = require('react-router');
-let Route = ReactRouter.Route;;
+let Route = ReactRouter.Route;
 
 let App = require('./components/App');
 let Home = require('./components/Home');

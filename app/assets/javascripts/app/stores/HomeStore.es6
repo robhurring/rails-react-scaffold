@@ -18,6 +18,6 @@ module.exports = Reflux.createStore({
       })
       .then(() => {
         this.trigger(this.time);
-      })
+      });
   }
 });
