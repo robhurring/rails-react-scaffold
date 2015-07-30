@@ -4,6 +4,8 @@ let HomeStore = require('../stores/HomeStore');
 let HomeActions = require('../actions/HomeActions');
 
 module.exports = React.createClass({
+  crazyDelay: 100,
+
   mixins: [
     Reflux.connect(HomeStore, 'time'),
     React.addons.LinkedStateMixin
@@ -11,7 +13,7 @@ module.exports = React.createClass({
 
   getInitialState() {
     return {
-      format: '%m/%d/%Y %I:%M:%S.%L',
+      format: '%m/%d/%Y %I:%M:%S.%L %N',
       goingCrazy: false
     };
   },
@@ -32,7 +34,7 @@ module.exports = React.createClass({
       this.setState({goingCrazy: true});
       this.crazyInterval = setInterval(() => {
         this.update();
-      }, 100);
+      }, this.crazyDelay);
     }
   },
 
