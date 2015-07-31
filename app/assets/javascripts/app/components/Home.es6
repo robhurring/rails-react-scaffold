@@ -2,10 +2,9 @@ let React = require('react/addons');
 let Reflux = require('reflux');
 let HomeStore = require('../stores/HomeStore');
 let HomeActions = require('../actions/HomeActions');
+let Range = require('./Range');
 
 module.exports = React.createClass({
-  crazyDelay: 100,
-
   mixins: [
     Reflux.connect(HomeStore, 'time'),
     React.addons.LinkedStateMixin
@@ -14,7 +13,8 @@ module.exports = React.createClass({
   getInitialState() {
     return {
       format: '%m/%d/%Y %I:%M:%S.%L %N',
-      goingCrazy: false
+      goingCrazy: false,
+      delay: 1000
     };
   },
 
@@ -27,18 +27,28 @@ module.exports = React.createClass({
   },
 
   goCrazy() {
-    if(this.state.goingCrazy) {
-      this.setState({goingCrazy: false});
+    this.setState({goingCrazy: !this.state.goingCrazy})
+  },
+
+  updateDelay(event) {
+    this.setState({delay: event.target.value});
+  },
+
+  updateCrazy() {
+    if(this.crazyInterval) {
       clearInterval(this.crazyInterval);
-    } else {
-      this.setState({goingCrazy: true});
+    }
+
+    if(this.state.goingCrazy) {
       this.crazyInterval = setInterval(() => {
         this.update();
-      }, this.crazyDelay);
+      }, this.state.delay);
     }
   },
 
   render() {
+    this.updateCrazy();
+
     let crazyButtonLabel = this.state.goingCrazy ? 'Chill out!' : 'Go something something';
     let crazyButton = (
       <button onClick={this.goCrazy}>{crazyButtonLabel}</button>
@@ -47,8 +57,14 @@ module.exports = React.createClass({
     return (
       <div>
         <p>It is currently {this.state.time}</p>
-        <input type="text" ref="format" valueLink={this.linkState('format')} />
+        <input type="text" ref="format" valueLink={this.linkState('format')} />&nbsp;
         <button onClick={this.update}>Update</button>
+
+        <p>
+          Delay: {this.state.delay}<br/>
+          <Range min={1} max={1000} onChange={this.updateDelay} />
+        </p>
+
         {crazyButton}
       </div>
     );
