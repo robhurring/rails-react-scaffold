@@ -32,6 +32,6 @@ module ReactScaffold
       #{config.root}/app/forms
     )
 
-    config.browserify_rails.commandline_options = %(-t babelify --extension=".es6")
+    config.browserify_rails.commandline_options = %(-t babelify --extension=".jsx")
   end
 end

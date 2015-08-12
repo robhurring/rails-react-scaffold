@@ -1,6 +1,6 @@
-let Reflux = require('reflux');
-let HomeActions = require('../actions/HomeActions');
-let request = require('../../api').request;
+import Reflux from 'reflux';
+import HomeActions from '../actions/HomeActions';
+import request from '../../api';
 
 module.exports = Reflux.createStore({
   listenables: [HomeActions],

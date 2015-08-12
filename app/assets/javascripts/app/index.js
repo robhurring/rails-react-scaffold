@@ -4,3 +4,5 @@ let Router = require('./router');
 // configure our API endpoint
 API.endpoint = '/api';
 
+// kick-off
+Router.start();

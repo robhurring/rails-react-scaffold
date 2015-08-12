@@ -1,4 +1,4 @@
-let $ = require('jquery')
+import $ from 'jquery';
 
 let API = exports.API = {
   endpoint: '/api'
@@ -9,7 +9,7 @@ let apiPath = (path) => {
 };
 
 // API Wrapper around $.ajax that is specific to this app's API and Promise-based
-exports.request = (options) => {
+export default function request(options) {
   if(!options) {
     throw new Error('No options given')
   }

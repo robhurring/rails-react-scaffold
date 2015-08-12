@@ -1,6 +1,6 @@
-let React = require('react');
+import React from 'react';
 
-module.exports = React.createClass({
+export default class Header extends React.Component {
   render() {
     return (
       <header>
@@ -8,4 +8,4 @@ module.exports = React.createClass({
       </header>
     );
   }
-});
+}

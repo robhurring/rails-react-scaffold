@@ -1,10 +1,12 @@
-let React = require('react/addons');
-let Reflux = require('reflux');
-let HomeStore = require('../stores/HomeStore');
-let HomeActions = require('../actions/HomeActions');
-let Range = require('./Range');
+import React from 'react/addons';
+import Reflux from 'reflux';
+import HomeStore from '../stores/HomeStore';
+import HomeActions from '../actions/HomeActions';
 
-module.exports = React.createClass({
+import Range from '../components/Range';
+
+// NOTE: no way to do mixins sanely yet for es6 classes
+const Home = React.createClass({
   mixins: [
     Reflux.connect(HomeStore, 'time'),
     React.addons.LinkedStateMixin
@@ -70,3 +72,5 @@ module.exports = React.createClass({
     );
   }
 });
+
+export default Home
