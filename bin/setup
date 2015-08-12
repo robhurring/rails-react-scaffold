@@ -1,37 +1,67 @@
 #!/usr/bin/env ruby
 require 'pathname'
+require_relative './setup_support'
 
-def exists?(command)
-  system("which #{command}> /dev/null 2>&1")
-end
+include SetupSupport
 
-
-# path to your application root.
 APP_ROOT = Pathname.new File.expand_path('../../',  __FILE__)
 
 Dir.chdir APP_ROOT do
-  # This script is a starting point to setup your application.
-  # Add necessary setup steps to this file:
+  step 'Installing dependencies' do
+    run 'gem install bundler --conservative'
+    run 'bundle check || bundle install'
+  end
 
-  puts "== Installing dependencies =="
-  system "gem install bundler --conservative"
-  system "bundle check || bundle install"
+  step 'Copying sample files' do
+    Dir['config/*.example.yml'].each do |file|
+      target = file.gsub /.example/, ''
+      run "cp #{file} #{target}", %(#{file} -> #{target}).green
+    end
+  end
 
-  # puts "\n== Copying sample files =="
-  # unless File.exist?("config/database.yml")
-  #   system "cp config/database.yml.sample config/database.yml"
-  # end
+  step 'Installing NPM dependencies' do
+    run 'npm install'
+  end
 
-  puts "== Installing NPM dependencies =="
-  system "npm install"
+  step 'Preparing database' do
+    run 'bin/rake db:create' do |output|
+      if output =~ /already exists/
+        rake %(db:migrate)
+      else
+        rake %(db:setup)
+      end
+    end
 
-  puts "\n== Preparing database =="
-  system "bin/rake db:setup"
+    rake 'db:test:prepare'
+  end
 
-  puts "\n== Removing old logs and tempfiles =="
-  system "rm -f log/*"
-  system "rm -rf tmp/cache"
+  step 'Removing old logs and tempfiles' do
+    run 'rm -f log/*'
+    run 'rm -rf tmp/cache'
+    run 'rm -rf public/assets'
+  end
 
-  puts "\n== Restarting application server =="
-  system "touch tmp/restart.txt"
+  step 'Restarting application server' do
+    run 'touch tmp/restart.txt'
+  end
+
+  puts template(:installed)
 end
+
+__END__
+
+@@installed
+          _                                           _      _       _
+ ___  ___| |_ _   _ _ __     ___ ___  _ __ ___  _ __ | | ___| |_ ___| |
+/ __|/ _ \ __| | | | '_ \   / __/ _ \| '_ ` _ \| '_ \| |/ _ \ __/ _ \ |
+\__ \  __/ |_| |_| | |_) | | (_| (_) | | | | | | |_) | |  __/ ||  __/_|
+|___/\___|\__|\__,_| .__/   \___\___/|_| |_| |_| .__/|_|\___|\__\___(_)
+                   |_|                         |_|
+
+Next steps:
+
+  Try seeing if all the tests pass locally using:
+
+    rspec
+    npm test
+
